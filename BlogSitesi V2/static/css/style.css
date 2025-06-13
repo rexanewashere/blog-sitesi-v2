@@ -1,0 +1,1206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --primary: #4F46E5;
+    --secondary: #8B5CF6;
+    --accent: #06b6d4;
+    
+}
+.hero-section {
+min-height: 100vh;
+background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+position: relative;
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.hero-content {
+position: relative;
+z-index: 2;
+text-align: center;
+}
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.header {
+    height: 100vh;
+    background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.animated-bg span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: move 10s linear infinite;
+    opacity: 0;
+}
+
+.gradient-follow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.1;
+    transition: 0.2s ease-out;
+}
+
+@keyframes move {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1500px) translateX(1500px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.profile-container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    margin-bottom: 20px;
+    animation: glowPulse 2s infinite;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+    
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+    70% { box-shadow: 0 0 0 20px rgba(79, 70, 229, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+.name {
+    font-size: 3em;
+    margin: 10px 0;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: colorFlow 5s infinite;
+}
+
+.title-text {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: var(--accent);
+}
+
+@keyframes colorFlow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-link:hover::before {
+    opacity: 0.7;
+}
+
+.social-link:hover {
+    transform: scale(1.1) rotate(360deg);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+}
+
+/* About Section */
+.about-section {
+padding: 80px 20px;
+background: linear-gradient(135deg, #1d1d1d 0%, #2d2d2d 100%);
+position: relative;
+overflow: hidden;
+}
+
+.about-waves {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+z-index: 1;
+}
+
+.wave {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 100px;
+background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%234F46E5" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+background-size: 1440px 100px;
+animation: wave-animation 10s linear infinite;
+}
+
+.wave:nth-child(2) {
+bottom: 10px;
+opacity: 0.5;
+animation: wave-animation 7s linear infinite;
+}
+
+.wave:nth-child(3) {
+bottom: 20px;
+opacity: 0.2;
+animation: wave-animation 5s linear infinite;
+}
+
+@keyframes wave-animation {
+0% { transform: translateX(0); }
+100% { transform: translateX(-1440px); }
+}
+
+.about-content {
+max-width: 1000px;
+margin: 0 auto;
+background: rgba(255, 255, 255, 0.03);
+padding: 40px;
+border-radius: 20px;
+position: relative;
+z-index: 2;
+overflow: hidden;
+box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+backdrop-filter: blur(8px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+transform: translateZ(0);
+}
+
+.about-content:hover {
+transform: translateZ(50px);
+transition: transform 0.5s ease;
+}
+
+.about-content h2 {
+font-size: 2.5em;
+margin-bottom: 30px;
+position: relative;
+display: inline-block;
+color: var(--primary);
+}
+
+.about-content h2::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 0;
+width: 100%;
+height: 3px;
+background: linear-gradient(90deg, var(--primary), transparent);
+animation: width-animation 3s ease infinite;
+}
+
+@keyframes width-animation {
+0% { width: 0; opacity: 0; }
+50% { width: 100%; opacity: 1; }
+100% { width: 0; opacity: 0; }
+}
+
+/* Skills Section */
+
+/* Ana Başlık Bölümü */
+.hero-section {
+min-height: 100vh;
+background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+position: relative;
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.hero-content {
+position: relative;
+z-index: 2;
+text-align: center;
+}
+
+.name-animation {
+font-size: 4em;
+font-weight: bold;
+background: linear-gradient(-45deg, var(--primary), var(--secondary), var(--accent), #ff6b6b);
+background-size: 300%;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: gradientFlow 10s ease infinite;
+}
+
+@keyframes gradientFlow {
+0% { background-position: 0% 50% }
+50% { background-position: 100% 50% }
+100% { background-position: 0% 50% }
+}
+
+.hero-subtitle {
+font-size: 1.5em;
+margin-top: 20px;
+color: var(--accent);
+opacity: 0;
+transform: translateY(20px);
+animation: fadeInUp 0.8s forwards 0.5s;
+}
+
+@keyframes fadeInUp {
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* Özel Love Bölümü */
+.love-section {
+padding: 80px 20px;
+background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+position: relative;
+}
+
+.love-container {
+max-width: 1200px;
+margin: 0 auto;
+position: relative;
+}
+
+.heart-container {
+position: relative;
+width: 200px;
+height: 200px;
+margin: 0 auto 30px;
+transform-style: preserve-3d;
+animation: heartBeat 2s infinite;
+}
+
+.heart {
+position: absolute;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, var(--primary), #ff6b6b);
+transform: rotate(45deg);
+border-radius: 20px;
+box-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+}
+
+.heart::before,
+.heart::after {
+content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+background: inherit;
+border-radius: 50%;
+}
+
+.heart::before {
+top: -50%;
+left: 0;
+}
+
+.heart::after {
+top: 0;
+left: -50%;
+}
+
+@keyframes heartBeat {
+0%, 100% { transform: scale(1) rotate(45deg); }
+50% { transform: scale(1.1) rotate(45deg); }
+}
+
+/* Yeni Skill Kartları */
+.skill-card {
+background: rgba(255, 255, 255, 0.03);
+backdrop-filter: blur(10px);
+border-radius: 20px;
+padding: 30px;
+position: relative;
+overflow: hidden;
+transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05));
+transform: translateX(-100%);
+transition: transform 0.5s;
+}
+
+.skill-card:hover::before {
+transform: translateX(0);
+}
+
+.skill-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.skill-icon-wrapper {
+width: 80px;
+height: 80px;
+background: linear-gradient(45deg, var(--primary), var(--secondary));
+border-radius: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-bottom: 20px;
+transform: rotate(-10deg);
+transition: transform 0.3s;
+}
+
+.skill-card:hover .skill-icon-wrapper {
+transform: rotate(0deg);
+}
+
+/* E-Ticaret Bölümü */
+.ecommerce-section {
+padding: 80px 20px;
+background: #1a1a1a;
+}
+
+.ecommerce-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+max-width: 1400px;
+margin: 0 auto;
+}
+
+.revenue-card {
+position: relative;
+border-radius: 20px;
+overflow: hidden;
+aspect-ratio: 16/9;
+}
+
+.revenue-card img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.5s;
+}
+
+.revenue-card:hover img {
+transform: scale(1.1);
+}
+
+.revenue-overlay {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+padding: 20px;
+color: white;
+transform: translateY(100%);
+transition: transform 0.3s;
+}
+
+.revenue-card:hover .revenue-overlay {
+transform: translateY(0);
+}
+
+/* About Section */
+.about-section {
+padding: 100px 20px;
+background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+position: relative;
+overflow: hidden;
+}
+
+.about-container {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 50px;
+align-items: center;
+}
+
+.about-image {
+position: relative;
+border-radius: 30px;
+overflow: hidden;
+box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.about-image img {
+width: 100%;
+height: auto;
+transform: scale(1.1);
+transition: transform 0.5s;
+}
+
+.about-image:hover img {
+transform: scale(1);
+}
+
+.about-content {
+padding: 30px;
+background: rgba(255,255,255,0.03);
+border-radius: 20px;
+backdrop-filter: blur(10px);
+}
+
+.about-title {
+font-size: 2.5em;
+color: var(--primary);
+margin-bottom: 20px;
+}
+
+.about-text {
+line-height: 1.8;
+color: #ffffff;
+opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+.about-container {
+    grid-template-columns: 1fr;
+}
+
+.name-animation {
+    font-size: 2.5em;
+}
+}
+
+
+.skills-grid {
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 40px;
+padding: 20px;
+position: relative;
+z-index: 2;
+}
+
+.skill-card {
+background: rgba(255, 255, 255, 0.03);
+padding: 30px;
+border-radius: 20px;
+position: relative;
+overflow: hidden;
+transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, transparent, rgba(79, 70, 229, 0.1));
+transform: translateY(100%);
+transition: transform 0.5s ease;
+}
+
+.skill-card:hover::before {
+transform: translateY(0);
+}
+
+.skill-card:hover {
+transform: translateY(-10px) scale(1.02);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.skill-icon {
+font-size: 3em;
+margin-bottom: 20px;
+display: inline-block;
+position: relative;
+z-index: 1;
+}
+
+.skill-icon::after {
+content: '';
+position: absolute;
+width: 30px;
+height: 30px;
+background: var(--primary);
+border-radius: 50%;
+top: -5px;
+right: -5px;
+opacity: 0.2;
+animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+0% { transform: scale(1); opacity: 0.2; }
+50% { transform: scale(1.5); opacity: 0.1; }
+100% { transform: scale(1); opacity: 0.2; }
+}
+
+.skill-card h3 {
+font-size: 1.5em;
+margin-bottom: 15px;
+color: var(--primary);
+position: relative;
+z-index: 1;
+}
+
+.skill-card p {
+color: #ffffff;
+opacity: 0.8;
+line-height: 1.6;
+margin-bottom: 20px;
+position: relative;
+z-index: 1;
+}
+
+.skill-progress {
+width: 100%;
+height: 8px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+overflow: hidden;
+position: relative;
+z-index: 1;
+}
+
+.skill-progress::after {
+content: '';
+position: absolute;
+left: 0;
+top: 0;
+height: 100%;
+width: 0;
+background: linear-gradient(90deg, var(--primary), var(--secondary));
+animation: fillProgress 1.5s ease-out forwards;
+box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+}
+
+.skill-percentage {
+position: absolute;
+right: 0;
+top: -25px;
+font-size: 0.9em;
+color: var(--primary);
+opacity: 0;
+transform: translateY(10px);
+transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-percentage {
+opacity: 1;
+transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .name { font-size: 2em; }
+}
+
+.about-content {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 30px;
+position: relative;
+}
+
+.about-text {
+padding: 20px;
+}
+
+.about-stats {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+padding: 20px;
+}
+
+.stat-card {
+background: rgba(79, 70, 229, 0.1);
+padding: 20px;
+border-radius: 15px;
+text-align: center;
+transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+transform: translateY(-5px);
+}
+
+.stat-number {
+font-size: 2.5em;
+color: var(--primary);
+font-weight: bold;
+margin-bottom: 10px;
+}
+
+.stat-label {
+color: var(--accent);
+font-size: 0.9em;
+}
+
+/* Skills Bölümü İyileştirmeleri */
+.skill-card {
+position: relative;
+backdrop-filter: blur(10px);
+}
+
+.skill-card::after {
+content: '';
+position: absolute;
+inset: 0;
+border-radius: 20px;
+padding: 2px;
+background: linear-gradient(45deg, var(--primary), var(--secondary));
+-webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+mask-composite: exclude;
+pointer-events: none;
+}
+
+.skill-details {
+margin-top: 20px;
+display: grid;
+gap: 10px;
+}
+
+.skill-tag {
+display: inline-block;
+padding: 5px 10px;
+background: rgba(79, 70, 229, 0.1);
+border-radius: 15px;
+font-size: 0.8em;
+margin: 5px;
+transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+background: var(--primary);
+transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+.about-content {
+    grid-template-columns: 1fr;
+}
+
+.about-stats {
+    grid-template-columns: 1fr;
+}
+}
+.skills-container {
+padding: 80px 20px;
+background: #1a1a1a;
+position: relative;
+min-height: 100vh;
+perspective: 1000px;
+}
+
+.particle-background {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+.particle {
+position: absolute;
+display: block;
+pointer-events: none;
+width: 5px;
+height: 5px;
+background: var(--primary);
+border-radius: 50%;
+animation: floating 15s infinite linear;
+}
+
+@keyframes floating {
+0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+}
+10% {
+    opacity: 1;
+}
+90% {
+    opacity: 1;
+}
+100% {
+    transform: translateY(-1000px) translateX(1000px) rotate(360deg);
+    opacity: 0;
+}
+}
+
+
+
+.level-progress {
+height: 100%;
+background: linear-gradient(90deg, var(--primary), var(--secondary));
+border-radius: 3px;
+transition: width 1.5s ease;
+}
+
+.level-label {
+position: absolute;
+right: 0;
+top: -25px;
+color: var(--accent);
+font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+.skills-grid {
+    grid-template-columns: 1fr;
+}
+
+.skill-card:hover {
+    transform: none;
+}
+}
+/* Ana Konteyner */
+.skills-container {
+padding: 80px 20px;
+background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+position: relative;
+}
+
+/* Özel Hilal Bölümü */
+.moonlight-section {
+padding: 60px 20px;
+background: linear-gradient(to right, #1a1a1a, #2d2d2d);
+position: relative;
+overflow: hidden;
+margin-bottom: 80px;
+}
+
+.moonlight-container {
+max-width: 1200px;
+margin: 0 auto;
+text-align: center;
+position: relative;
+}
+
+.moon-symbol {
+width: 200px;
+height: 200px;
+border-radius: 50%;
+background: linear-gradient(45deg, var(--primary), var(--secondary));
+position: relative;
+margin: 0 auto 30px;
+animation: moonGlow 4s infinite;
+}
+
+.moon-symbol::before {
+content: '';
+position: absolute;
+width: 160px;
+height: 160px;
+background: #1a1a1a;
+border-radius: 50%;
+top: 20px;
+left: 40px;
+}
+
+@keyframes moonGlow {
+0%, 100% { box-shadow: 0 0 20px var(--primary); }
+50% { box-shadow: 0 0 40px var(--secondary); }
+}
+
+.moon-text {
+font-size: 2em;
+color: var(--primary);
+margin-bottom: 20px;
+text-shadow: 0 0 10px var(--primary);
+}
+
+/* Geliştirilmiş Skill Kartları */
+.skills-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+max-width: 1400px;
+margin: 0 auto;
+padding: 40px 20px;
+}
+
+.skill-card {
+background: rgba(255, 255, 255, 0.05);
+border-radius: 20px;
+padding: 30px;
+position: relative;
+transition: all 0.3s ease;
+border: 1px solid rgba(255, 255, 255, 0.1);
+overflow: hidden;
+}
+
+.skill-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2);
+}
+
+.skill-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 5px;
+background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.skill-content {
+position: relative;
+z-index: 1;
+}
+
+.skill-icon {
+font-size: 3em;
+margin-bottom: 20px;
+display: inline-block;
+}
+
+.skill-title {
+font-size: 1.8em;
+color: var(--primary);
+margin-bottom: 15px;
+}
+
+.skill-level {
+display: flex;
+align-items: center;
+margin: 15px 0;
+}
+
+.level-bar {
+flex-grow: 1;
+height: 8px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+overflow: hidden;
+margin-right: 10px;
+}
+
+.level-fill {
+height: 100%;
+background: linear-gradient(90deg, var(--primary), var(--secondary));
+border-radius: 4px;
+transition: width 1s ease;
+}
+
+.skill-status {
+margin-top: 20px;
+padding: 10px;
+border-radius: 10px;
+background: rgba(79, 70, 229, 0.1);
+text-align: center;
+font-size: 0.9em;
+color: var(--accent);
+}
+
+/* Gelecek Hedefleri Bölümü */
+.future-goals {
+margin-top: 60px;
+padding: 40px;
+background: rgba(255, 255, 255, 0.03);
+border-radius: 20px;
+text-align: center;
+}
+
+.future-goals h2 {
+color: var(--primary);
+margin-bottom: 30px;
+font-size: 2em;
+}
+
+.goals-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+gap: 20px;
+}
+
+.goal-card {
+padding: 20px;
+background: rgba(79, 70, 229, 0.1);
+border-radius: 15px;
+transition: all 0.3s ease;
+}
+
+.goal-card:hover {
+transform: translateY(-5px);
+background: rgba(79, 70, 229, 0.2);
+}
+
+@media (max-width: 768px) {
+.skills-grid {
+    grid-template-columns: 1fr;
+}
+
+.moon-symbol {
+    width: 150px;
+    height: 150px;
+}
+
+.moon-symbol::before {
+    width: 120px;
+    height: 120px;
+    top: 15px;
+    left: 30px;
+}
+}
+
+    /* Enhanced E-commerce Section */
+    .ecommerce-section {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    position: relative;
+    overflow: hidden;
+}
+
+.ecommerce-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.ecommerce-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.ecommerce-card:hover {
+    transform: translateY(-5px);
+}
+
+.ecommerce-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.revenue-chart {
+    height: 100px;
+    margin: 20px 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    padding: 10px 0;
+}
+
+.chart-bar {
+    flex: 1;
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 5px 5px 0 0;
+    transition: height 1s ease;
+    position: relative;
+}
+
+.chart-bar::after {
+    content: attr(data-value);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    color: var(--accent);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-right: 3px solid #4f46e5;
+    border-bottom: 3px solid #4f46e5;
+    transform: rotate(45deg);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
+}
+
+
+/* Scrollbar Stilleri */
+::-webkit-scrollbar {
+width: 10px;
+}
+
+::-webkit-scrollbar-track {
+background: rgba(79, 70, 229, 0.1);
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: linear-gradient(45deg, var(--primary), var(--secondary));
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: linear-gradient(45deg, var(--secondary), var(--primary));
+}
+
+
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Gradyanlı ve Parlayan "₺640,000" Metni */
+.animated-amount {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(90deg, #27ae60, #ffffff, #27ae60);
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* "Toplam Ciro:" Metni */
+.total-revenue {
+    color: #27ae60; /* Yeşil renk */
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Parlayan Bullet Points */
+.bullet-points {
+    color: #333333;
+}
+
+.bullet-points p {
+    position: relative;
+    
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+
+
+/* Responsive Tasarım */
+@media (max-width: 480px) {
+    .ecommerce-card {
+        padding: 16px;
+    }
+
+    .chart-bar {
+        width: 20px;
+    }
+
+    .animated-amount {
+        font-size: 1rem;
+    }
+
+    .total-revenue {
+        font-size: 1rem;
+    }
+
+    .bullet-points p {
+        font-size: 0.9rem;
+    }
+}
